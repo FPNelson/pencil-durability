@@ -6,16 +6,30 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class PaperTest {
+	
+	private Paper paper;
+
+	@Before
+	public void setup() {
+		paper = new Paper();
+	}
+	
 	@Test
 	public void whenReadTextFromEmptyPaperThenReturnsEmptyString() {
-		Paper paper = new Paper();
 		assertEquals("", paper.read());
 	}
 	
 	@Test
 	public void whenReadTextAfterAppendingOnceFromPaperThenReturnsText() {
-		Paper paper = new Paper();
 		paper.append("Doing stuff");
 		assertEquals("Doing stuff", paper.read());
+	}
+	
+	@Test
+	public void whenReadTextAfterAppendingMultipleTimesFromPaperThenReturnsText() {
+		paper.append("Doing stuff");
+		paper.append("? ");
+		paper.append("I'm not");
+		assertEquals("Doing stuff? I'm not", paper.read());
 	}
 }
