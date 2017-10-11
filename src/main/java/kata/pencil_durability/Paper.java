@@ -13,8 +13,10 @@ public class Paper {
 
 	protected void erase(String str) {
 		int start = text.lastIndexOf(str);
-		for(int i = 0; i < str.length(); i++) {
-			text.setCharAt(start + i, ' ');
+		if(start != -1) {
+			for(int i = 0; i < str.length(); i++) {
+				text.setCharAt(start + i, ' ');
+			}
 		}
 	}
 }

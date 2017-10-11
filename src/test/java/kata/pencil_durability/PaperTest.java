@@ -47,4 +47,11 @@ public class PaperTest {
 		paper.erase("doing");
 		assertEquals("Are you doing stuff? Cause I'm not       anything. But if you're       something, then I will", paper.read());
 	}
+	
+	@Test
+	public void whenErasingWordFromPaperWhichDoesNotExistThenDoesNothing() {
+		paper.append("Are you doing stuff? Cause I'm not doing anything");
+		paper.erase("lunch");
+		assertEquals("Are you doing stuff? Cause I'm not doing anything", paper.read());
+	}
 }
