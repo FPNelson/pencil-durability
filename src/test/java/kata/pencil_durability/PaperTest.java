@@ -5,13 +5,17 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import junit.framework.Assert;
-
 public class PaperTest {
 	@Test
-	public void whenReadTextFromPaperThenReturnsWrittenText() {
+	public void whenReadTextFromEmptyPaperThenReturnsEmptyString() {
 		Paper paper = new Paper();
-		String text = paper.read();
-		assertEquals("Some text", text);
+		assertEquals("", paper.read());
+	}
+	
+	@Test
+	public void whenReadTextAfterAppendingOnceFromPaperThenReturnsText() {
+		Paper paper = new Paper();
+		paper.append("Doing stuff");
+		assertEquals("Doing stuff", paper.read());
 	}
 }
