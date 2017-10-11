@@ -20,16 +20,31 @@ public class PaperTest {
 	}
 	
 	@Test
-	public void whenReadTextAfterAppendingOnceFromPaperThenReturnsText() {
+	public void whenAppendSingleTimeFromPaperThenConcatenatesToString() {
 		paper.append("Doing stuff");
 		assertEquals("Doing stuff", paper.read());
 	}
 	
 	@Test
-	public void whenReadTextAfterAppendingMultipleTimesFromPaperThenReturnsText() {
+	public void whenAppendMultipleTimesFromPaperThenConcatenatesAllToSingleString() {
 		paper.append("Doing stuff");
 		paper.append("? ");
 		paper.append("I'm not");
 		assertEquals("Doing stuff? I'm not", paper.read());
+	}
+	
+	@Test
+	public void whenErasingWordFromPaperThenErasesLastInstanceOfWord() {
+		paper.append("Are you doing stuff? Cause I'm not doing anything");
+		paper.erase("doing");
+		assertEquals("Are you doing stuff? Cause I'm not       anything", paper.read());
+	}
+	
+	@Test
+	public void whenErasingWordFromPaperMultipleTimesThenErasesEachLastInstanceOfWord() {
+		paper.append("Are you doing stuff? Cause I'm not doing anything. But if you're doing something, then I will");
+		paper.erase("doing");
+		paper.erase("doing");
+		assertEquals("Are you doing stuff? Cause I'm not       anything. But if you're       something, then I will", paper.read());
 	}
 }
