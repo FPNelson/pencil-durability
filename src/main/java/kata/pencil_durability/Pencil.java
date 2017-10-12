@@ -5,11 +5,13 @@ public class Pencil {
 	private final int initialPointDurability;
 	private int pointDurability;
 	private int length;
+	private int eraserDurability;
 
-	public Pencil(int pointDurability, int length) {
+	public Pencil(int pointDurability, int length, int eraserDurability) {
 		this.initialPointDurability = pointDurability;
 		this.pointDurability = pointDurability;
 		this.length = length;
+		this.eraserDurability = eraserDurability;
 	}
 
 	public int getPointDurability() {
@@ -18,6 +20,10 @@ public class Pencil {
 
 	public int getLength() {
 		return length;
+	}
+
+	public int getEraserDurability() {
+		return eraserDurability;
 	}
 
 	public void write(String str, Paper paper) {
@@ -30,7 +36,13 @@ public class Pencil {
 	}
 
 	public void erase(String str, Paper paper) {
-		paper.erase(str);
+		int charsToErase = 0;
+		for(char character : str.toCharArray()) {
+			if(reduceEraserDurability(character)) {
+				charsToErase++;
+			}
+		}
+		paper.erase(str, charsToErase);
 	}
 	
 	public void sharpen() {
@@ -48,5 +60,12 @@ public class Pencil {
 				pointDurability--;
 		}
 		return pointDurability >= 0;
+	}
+	
+	private boolean reduceEraserDurability(char character) {
+		if(!Character.isWhitespace(character)) {
+			eraserDurability--;
+		}
+		return eraserDurability >= 0;
 	}
 }

@@ -12,7 +12,7 @@ public class PencilTest {
 
 	@Before
 	public void setup() {
-		pencil = new Pencil(20, 3);
+		pencil = new Pencil(20, 3, 20);
 		paper = new Paper();
 	}
 
@@ -68,7 +68,7 @@ public class PencilTest {
 
 	@Test
 	public void whenWriteTextWithMorePointDurablePencilThenWritesEntireString() {
-		Pencil superPencil = new Pencil(40, 3);
+		Pencil superPencil = new Pencil(40, 3, 40);
 		superPencil.write("THIS IS TASTY", paper);
 		assertEquals("THIS IS TASTY", paper.read());
 	}
@@ -82,7 +82,7 @@ public class PencilTest {
 
 	@Test
 	public void whenSharpenDurablePencilThenResetsDurabilityToInitialValue() {
-		Pencil superPencil = new Pencil(40, 3);
+		Pencil superPencil = new Pencil(40, 3, 40);
 		superPencil.write("Test", paper);
 		superPencil.sharpen();
 		assertEquals(40, superPencil.getPointDurability());
@@ -96,7 +96,7 @@ public class PencilTest {
 
 	@Test
 	public void whenSharpenLongPencilThenReducesLengthByOne() {
-		Pencil longPencil = new Pencil(20, 5);
+		Pencil longPencil = new Pencil(20, 5, 20);
 		longPencil.sharpen();
 		assertEquals(4, longPencil.getLength());
 	}
@@ -114,12 +114,27 @@ public class PencilTest {
 
 	@Test
 	public void whenEraseWordFromPaperThenReplacesLastInstanceOfWordWithWhitespace() {
-		Pencil superPencil = new Pencil(100, 3);
+		Pencil superPencil = new Pencil(100, 3, 100);
 		superPencil.write("Are you doing stuff? Cause I'm not doing anything", paper);
 		superPencil.erase("doing", paper);
 		assertEquals("Are you doing stuff? Cause I'm not       anything", paper.read());
 	}
 	
+	@Test
+	public void whenEraseWordFromPaperWithNonDurableEraserThenReplacesLastNCharactersOfWordWithWhitespace() {
+		Pencil superPencil = new Pencil(100, 3, 4);
+		superPencil.write("Are you doing stuff? Cause I'm not doing oing anything", paper);
+		superPencil.erase("doing", paper);
+		assertEquals("Are you doing stuff? Cause I'm not d     oing anything", paper.read());
+	}
+	
+	@Test
+	public void whenEraseWordFromPaperThenReducesEraserDurabilityByFive() {
+		pencil.write("This is tasty!", paper);
+		pencil.erase("tasty", paper);
+		assertEquals(15, pencil.getEraserDurability());
+	}
+
 	private void assertDurability(String str, int expectedPointDurability) {
 		pencil.write(str, paper);
 		assertEquals(expectedPointDurability, pencil.getPointDurability());

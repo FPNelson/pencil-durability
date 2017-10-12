@@ -36,22 +36,29 @@ public class PaperTest {
 	@Test
 	public void whenErasingWordFromPaperThenErasesLastInstanceOfWord() {
 		paper.append("Are you doing stuff? Cause I'm not doing anything");
-		paper.erase("doing");
+		paper.erase("doing", 5);
 		assertEquals("Are you doing stuff? Cause I'm not       anything", paper.read());
+	}
+	
+	@Test
+	public void whenErasingWordFromPaperWithLimitedCharactersThenErasesLastInstanceOfWordStartingFromLastCharacter() {
+		paper.append("Are you doing stuff? Cause I'm not doing anything");
+		paper.erase("doing", 4);
+		assertEquals("Are you doing stuff? Cause I'm not d     anything", paper.read());
 	}
 
 	@Test
 	public void whenErasingWordFromPaperMultipleTimesThenErasesEachLastInstanceOfWord() {
 		paper.append("Are you doing stuff? Cause I'm not doing anything. But if you're doing something, then I will");
-		paper.erase("doing");
-		paper.erase("doing");
+		paper.erase("doing", 5);
+		paper.erase("doing", 5);
 		assertEquals("Are you doing stuff? Cause I'm not       anything. But if you're       something, then I will", paper.read());
 	}
 
 	@Test
 	public void whenErasingWordFromPaperWhichDoesNotExistThenDoesNothing() {
 		paper.append("Are you doing stuff? Cause I'm not doing anything");
-		paper.erase("lunch");
+		paper.erase("lunch", 5);
 		assertEquals("Are you doing stuff? Cause I'm not doing anything", paper.read());
 	}
 }
