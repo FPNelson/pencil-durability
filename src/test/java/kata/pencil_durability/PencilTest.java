@@ -66,6 +66,13 @@ public class PencilTest {
 		assertEquals("This is tasty! Very tas  ", paper.read());
 	}
 
+	@Test
+	public void whenWriteTextWithMorePointDurablePencilThenWritesEntireString() {
+		Pencil superPencil = new Pencil(40);
+		superPencil.write("THIS IS TASTY", paper);
+		assertEquals("THIS IS TASTY", paper.read());
+	}
+
 	private void assertDurability(String str, int expectedPointDurability) {
 		pencil.write(str, paper);
 		assertEquals(expectedPointDurability, pencil.getPointDurability());
