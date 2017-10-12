@@ -6,4 +6,7 @@ public class Pencil {
 		paper.append(str);
 	}
 
+	public int getPointDurability() {
+		return 20;
+	}
 }

@@ -21,4 +21,12 @@ public class PencilTest {
 		pencil.write(str, paper);
 		assertEquals(str, paper.read());
 	}
+	
+	@Test
+	public void whenWriteSpaceWithPencilThenDurabilityStaysSame() {
+		String str = " ";
+		Paper paper = new Paper();
+		pencil.write(str, paper);
+		assertEquals(20, pencil.getPointDurability());
+	}
 }
