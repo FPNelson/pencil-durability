@@ -112,6 +112,14 @@ public class PencilTest {
 		assertEquals(19, pencil.getPointDurability());
 	}
 
+	@Test
+	public void whenEraseWordFromPaperThenReplacesLastInstanceOfWordWithWhitespace() {
+		Pencil superPencil = new Pencil(100, 3);
+		superPencil.write("Are you doing stuff? Cause I'm not doing anything", paper);
+		superPencil.erase("doing", paper);
+		assertEquals("Are you doing stuff? Cause I'm not       anything", paper.read());
+	}
+	
 	private void assertDurability(String str, int expectedPointDurability) {
 		pencil.write(str, paper);
 		assertEquals(expectedPointDurability, pencil.getPointDurability());

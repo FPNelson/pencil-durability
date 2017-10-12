@@ -29,6 +29,10 @@ public class Pencil {
 		}
 	}
 
+	public void erase(String str, Paper paper) {
+		paper.erase(str);
+	}
+	
 	public void sharpen() {
 		if(length > 0) {
 			length--;
