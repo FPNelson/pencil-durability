@@ -10,6 +10,14 @@ public class Pencil {
 		this.pointDurability = pointDurability;
 	}
 
+	public int getPointDurability() {
+		return pointDurability;
+	}
+
+	public int getLength() {
+		return 9;
+	}
+
 	public void write(String str, Paper paper) {
 		for(char character : str.toCharArray()) {
 			if(reducePointDurability(character))
@@ -19,8 +27,8 @@ public class Pencil {
 		}
 	}
 
-	public int getPointDurability() {
-		return pointDurability;
+	public void sharpen() {
+		pointDurability = initialPointDurability;
 	}
 
 	private boolean reducePointDurability(char character) {
@@ -31,9 +39,5 @@ public class Pencil {
 				pointDurability--;
 		}
 		return pointDurability >= 0;
-	}
-
-	public void sharpen() {
-		pointDurability = initialPointDurability;
 	}
 }

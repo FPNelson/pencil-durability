@@ -87,6 +87,12 @@ public class PencilTest {
 		superPencil.sharpen();
 		assertEquals(40, superPencil.getPointDurability());
 	}
+	
+	@Test
+	public void whenSharpenPencilThenReducesLengthByOne() {
+		pencil.sharpen();
+		assertEquals(9, pencil.getLength());
+	}
 
 	private void assertDurability(String str, int expectedPointDurability) {
 		pencil.write(str, paper);
