@@ -2,9 +2,11 @@ package kata.pencil_durability;
 
 public class Pencil {
 
+	private final int initialPointDurability;
 	private int pointDurability;
 
 	public Pencil(int pointDurability) {
+		this.initialPointDurability = pointDurability;
 		this.pointDurability = pointDurability;
 	}
 
@@ -32,6 +34,6 @@ public class Pencil {
 	}
 
 	public void sharpen() {
-		pointDurability = 20;
+		pointDurability = initialPointDurability;
 	}
 }
