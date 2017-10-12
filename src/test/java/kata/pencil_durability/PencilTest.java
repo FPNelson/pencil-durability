@@ -25,36 +25,36 @@ public class PencilTest {
 	
 	@Test
 	public void whenWriteSpaceWithPencilThenDurabilityStaysSame() {
-		String str = " ";
-		pencil.write(str, paper);
-		assertEquals(40, pencil.getPointDurability());
+		assertDurability(" ", 40);
 	}
 	
 	@Test
 	public void whenWriteLowercaseLetterWithPencilThenDurabilityDecreasesByOne() {
-		String str = "e";
-		pencil.write(str, paper);
-		assertEquals(39, pencil.getPointDurability());
+		assertDurability("e", 39);
 	}
 	
 	@Test
 	public void whenWriteFiveLowercaseLettersWithPencilThenDurabilityDecreasesByFive() {
-		String str = "tasty";
-		pencil.write(str, paper);
-		assertEquals(35, pencil.getPointDurability());
+		assertDurability("tasty", 35);
 	}
 	
 	@Test
 	public void whenWriteUppercaseLettersWithPencilThenDurabilityDecreasesByTwo() {
-		String str = "E";
-		pencil.write(str, paper);
-		assertEquals(38, pencil.getPointDurability());
+		assertDurability("E", 38);
 	}
 	
 	@Test
 	public void whenWriteFiveUppercaseLettersWithPencilThenDurabilityDecreasesByTen() {
-		String str = "TASTY";
+		assertDurability("TASTY", 30);
+	}
+	
+	@Test
+	public void whenWriteOneUppercaseAndFourLowercaseLettersWithPencilThenDurabilityDecreasesBySix() {
+		assertDurability("Tasty", 34);
+	}
+	
+	private void assertDurability(String str, int expectedPointDurability) {
 		pencil.write(str, paper);
-		assertEquals(30, pencil.getPointDurability());
+		assertEquals(expectedPointDurability, pencil.getPointDurability());
 	}
 }
