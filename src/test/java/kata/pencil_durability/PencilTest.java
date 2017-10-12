@@ -12,7 +12,7 @@ public class PencilTest {
 
 	@Before
 	public void setup() {
-		pencil = new Pencil(20);
+		pencil = new Pencil(20, 3);
 		paper = new Paper();
 	}
 
@@ -68,7 +68,7 @@ public class PencilTest {
 
 	@Test
 	public void whenWriteTextWithMorePointDurablePencilThenWritesEntireString() {
-		Pencil superPencil = new Pencil(40);
+		Pencil superPencil = new Pencil(40, 3);
 		superPencil.write("THIS IS TASTY", paper);
 		assertEquals("THIS IS TASTY", paper.read());
 	}
@@ -82,16 +82,23 @@ public class PencilTest {
 
 	@Test
 	public void whenSharpenDurablePencilThenResetsDurabilityToInitialValue() {
-		Pencil superPencil = new Pencil(40);
+		Pencil superPencil = new Pencil(40, 3);
 		superPencil.write("Test", paper);
 		superPencil.sharpen();
 		assertEquals(40, superPencil.getPointDurability());
 	}
-	
+
 	@Test
 	public void whenSharpenPencilThenReducesLengthByOne() {
 		pencil.sharpen();
-		assertEquals(9, pencil.getLength());
+		assertEquals(2, pencil.getLength());
+	}
+
+	@Test
+	public void whenSharpenLongPencilThenReducesLengthByOne() {
+		Pencil longPencil = new Pencil(20, 5);
+		longPencil.sharpen();
+		assertEquals(4, longPencil.getLength());
 	}
 
 	private void assertDurability(String str, int expectedPointDurability) {

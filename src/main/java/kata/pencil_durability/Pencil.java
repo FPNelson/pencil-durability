@@ -4,10 +4,12 @@ public class Pencil {
 
 	private final int initialPointDurability;
 	private int pointDurability;
+	private int length;
 
-	public Pencil(int pointDurability) {
+	public Pencil(int pointDurability, int length) {
 		this.initialPointDurability = pointDurability;
 		this.pointDurability = pointDurability;
+		this.length = length;
 	}
 
 	public int getPointDurability() {
@@ -15,7 +17,7 @@ public class Pencil {
 	}
 
 	public int getLength() {
-		return 9;
+		return length;
 	}
 
 	public void write(String str, Paper paper) {
@@ -28,6 +30,7 @@ public class Pencil {
 	}
 
 	public void sharpen() {
+		length--;
 		pointDurability = initialPointDurability;
 	}
 
