@@ -30,8 +30,10 @@ public class Pencil {
 	}
 
 	public void sharpen() {
-		length--;
-		pointDurability = initialPointDurability;
+		if(length > 0) {
+			length--;
+			pointDurability = initialPointDurability;
+		}
 	}
 
 	private boolean reducePointDurability(char character) {

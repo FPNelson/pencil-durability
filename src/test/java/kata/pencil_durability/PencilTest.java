@@ -101,6 +101,17 @@ public class PencilTest {
 		assertEquals(4, longPencil.getLength());
 	}
 
+	@Test
+	public void whenSharpenPencilWithNoLengthThenDoesNothing() {
+		pencil.sharpen();
+		pencil.sharpen();
+		pencil.sharpen();
+		pencil.write("e", paper);
+		pencil.sharpen();
+		assertEquals(0, pencil.getLength());
+		assertEquals(19, pencil.getPointDurability());
+	}
+
 	private void assertDurability(String str, int expectedPointDurability) {
 		pencil.write(str, paper);
 		assertEquals(expectedPointDurability, pencil.getPointDurability());
