@@ -8,16 +8,17 @@ import org.junit.Test;
 public class PencilTest {
 	
 	private Pencil pencil;
+	private Paper paper;
 
 	@Before
 	public void setup() {
-		pencil = new Pencil();
+		pencil = new Pencil(40);
+		paper = new Paper();
 	}
 	
 	@Test
 	public void whenWriteWithPencilThenWritesTextToPaper() {
 		String str = "Testing 1...2...3...";
-		Paper paper = new Paper();
 		pencil.write(str, paper);
 		assertEquals(str, paper.read());
 	}
@@ -25,8 +26,14 @@ public class PencilTest {
 	@Test
 	public void whenWriteSpaceWithPencilThenDurabilityStaysSame() {
 		String str = " ";
-		Paper paper = new Paper();
 		pencil.write(str, paper);
-		assertEquals(20, pencil.getPointDurability());
+		assertEquals(40, pencil.getPointDurability());
+	}
+	
+	@Test
+	public void whenWriteLowercaseLetterWithPencilThenDurabilityDecreasesByOne() {
+		String str = "e";
+		pencil.write(str, paper);
+		assertEquals(39, pencil.getPointDurability());
 	}
 }
