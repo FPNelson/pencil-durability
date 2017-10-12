@@ -36,4 +36,11 @@ public class PencilTest {
 		pencil.write(str, paper);
 		assertEquals(39, pencil.getPointDurability());
 	}
+	
+	@Test
+	public void whenWriteFiveLowercaseLettersWithPencilThenDurabilityDecreasesByFive() {
+		String str = "tasty";
+		pencil.write(str, paper);
+		assertEquals(35, pencil.getPointDurability());
+	}
 }
