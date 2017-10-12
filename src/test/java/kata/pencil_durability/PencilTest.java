@@ -59,6 +59,13 @@ public class PencilTest {
 		assertEquals("THIS IS TAST ", paper.read());
 	}
 
+	@Test
+	public void whenWriteTextMultipleTimesWithInsufficientPointDurabilityThenAppendSpaces() {
+		pencil.write("This is tasty!", paper);
+		pencil.write(" Very tasty", paper);
+		assertEquals("This is tasty! Very tas  ", paper.read());
+	}
+
 	private void assertDurability(String str, int expectedPointDurability) {
 		pencil.write(str, paper);
 		assertEquals(expectedPointDurability, pencil.getPointDurability());
