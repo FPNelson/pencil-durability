@@ -21,8 +21,11 @@ public class Pencil {
 	}
 	
 	private void reducePointDurability(char character) {
-		if(Character.isLowerCase(character)) {
-			pointDurability -= 1;
+		switch(Character.getType(character)) {
+			case Character.UPPERCASE_LETTER:
+				pointDurability--;
+			case Character.LOWERCASE_LETTER:
+				pointDurability--;
 		}
 	}
 }

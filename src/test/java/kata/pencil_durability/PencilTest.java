@@ -43,4 +43,11 @@ public class PencilTest {
 		pencil.write(str, paper);
 		assertEquals(35, pencil.getPointDurability());
 	}
+	
+	@Test
+	public void whenWriteUppercaseLettersWithPencilThenDurabilityDecreasesByTwo() {
+		String str = "E";
+		pencil.write(str, paper);
+		assertEquals(38, pencil.getPointDurability());
+	}
 }
