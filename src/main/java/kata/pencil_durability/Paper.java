@@ -1,12 +1,17 @@
 package kata.pencil_durability;
 
 public class Paper {
-	private StringBuilder text = new StringBuilder();
-	
+
+	private StringBuilder text;
+
+	public Paper() {
+		text = new StringBuilder();
+	}
+
 	public String read() {
 		return text.toString();
 	}
-	
+
 	protected void append(String str) {
 		text.append(str);
 	}
