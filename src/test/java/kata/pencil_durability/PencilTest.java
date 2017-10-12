@@ -73,6 +73,13 @@ public class PencilTest {
 		assertEquals("THIS IS TASTY", paper.read());
 	}
 
+	@Test
+	public void whenSharpenPencilThenResetsDurabilityToInitialValue() {
+		pencil.write("Test", paper);
+		pencil.sharpen();
+		assertEquals(20, pencil.getPointDurability());
+	}
+	
 	private void assertDurability(String str, int expectedPointDurability) {
 		pencil.write(str, paper);
 		assertEquals(expectedPointDurability, pencil.getPointDurability());

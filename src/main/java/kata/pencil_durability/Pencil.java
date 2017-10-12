@@ -30,4 +30,8 @@ public class Pencil {
 		}
 		return pointDurability >= 0;
 	}
+
+	public void sharpen() {
+		pointDurability = 20;
+	}
 }
