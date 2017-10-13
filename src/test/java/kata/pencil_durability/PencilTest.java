@@ -148,7 +148,7 @@ public class PencilTest {
 		pencil.edit(pencil.erase("is", paper), "so", paper);
 		assertEquals(6, pencil.getPointDurability());
 	}
-	
+
 	@Test
 	public void whenEditPaperWithUppercaseLettersThenReducesPointDurabilityByFour() {
 		pencil.write("This is tasty!", paper);
@@ -161,6 +161,13 @@ public class PencilTest {
 		pencil.write("This is tasty!", paper);
 		pencil.edit(pencil.erase("tasty", paper), "yummy", paper);
 		assertEquals("This is yummy!", paper.read());
+	}
+
+	@Test
+	public void whenEditPaperThenReplacesLettersWithAtSymbols() {
+		pencil.write("This is tasty!", paper);
+		pencil.edit(pencil.erase("tasty", paper), "munchy", paper);
+		assertEquals("This is munch@", paper.read());
 	}
 
 	private void assertDurability(String str, int expectedPointDurability) {
