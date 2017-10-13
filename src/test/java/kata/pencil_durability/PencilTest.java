@@ -134,6 +134,13 @@ public class PencilTest {
 		pencil.erase("tasty", paper);
 		assertEquals(15, pencil.getEraserDurability());
 	}
+	
+	@Test
+	public void whenEraseWordFromPaperWhichDoesNotExistThenDoesNotReduceEraserDurability() {
+		pencil.write("This is!", paper);
+		pencil.erase("tasty", paper);
+		assertEquals(20, pencil.getEraserDurability());
+	}
 
 	private void assertDurability(String str, int expectedPointDurability) {
 		pencil.write(str, paper);

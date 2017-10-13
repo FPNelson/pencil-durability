@@ -27,24 +27,25 @@ public class Pencil {
 	}
 
 	public void write(String str, Paper paper) {
+		StringBuilder stringBuilder = new StringBuilder();
 		for(char character : str.toCharArray()) {
-			if(reducePointDurability(character))
-				paper.append(String.valueOf(character));
-			else
-				paper.append(" ");
+			stringBuilder.append(reducePointDurability(character) ? character : ' ');
 		}
+		paper.append(stringBuilder.toString());
 	}
 
 	public int erase(String str, Paper paper) {
 		int charsToErase = 0;
-		for(char character : str.toCharArray()) {
-			if(reduceEraserDurability(character)) {
-				charsToErase++;
+		if(paper.read().contains(str)) {
+			for(char character : str.toCharArray()) {
+				if(reduceEraserDurability(character)) {
+					charsToErase++;
+				}
 			}
 		}
 		return paper.erase(str, charsToErase);
 	}
-	
+
 	public void sharpen() {
 		if(length > 0) {
 			length--;
