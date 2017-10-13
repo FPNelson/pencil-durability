@@ -149,6 +149,13 @@ public class PencilTest {
 		assertEquals(3, pencil.getPointDurability());
 	}
 
+	@Test
+	public void whenEditPaperThenReplacesWhitespaceWithText() {
+		pencil.write("This is tasty!", paper);
+		pencil.edit(pencil.erase("tasty", paper), "yummy", paper);
+		assertEquals("This is yummy!", paper.read());
+	}
+
 	private void assertDurability(String str, int expectedPointDurability) {
 		pencil.write(str, paper);
 		assertEquals(expectedPointDurability, pencil.getPointDurability());
