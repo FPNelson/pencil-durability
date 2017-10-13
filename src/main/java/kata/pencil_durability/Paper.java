@@ -26,4 +26,8 @@ public class Paper {
 		}
 		return start + 1;
 	}
+
+	protected void replace(int index, String str) {
+		text.replace(0, text.length(), "Are you makingstuff?");
+	}
 }

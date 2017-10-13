@@ -67,4 +67,12 @@ public class PaperTest {
 		paper.append("Are you doing stuff?");
 		assertEquals(8, paper.erase("doing", 5));
 	}
+
+	@Test
+	public void whenEditingTextInPaperThenReplacesWhitespaceInsteadOfAppending() {
+		paper.append("Are you doing stuff?");
+		paper.erase("doing", 5);
+		paper.replace(paper.erase("doing", 5), "making");
+		assertEquals("Are you makingstuff?", paper.read());
+	}
 }
