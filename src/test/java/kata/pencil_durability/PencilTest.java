@@ -143,10 +143,17 @@ public class PencilTest {
 	}
 
 	@Test
-	public void whenEditPaperThenReducesPointDurabilityByFive() {
+	public void whenEditPaperWithLowercaseLettersThenReducesPointDurabilityByTwo() {
 		pencil.write("This is tasty!", paper);
-		pencil.edit(pencil.erase("tasty", paper), "yummy", paper);
-		assertEquals(3, pencil.getPointDurability());
+		pencil.edit(pencil.erase("is", paper), "so", paper);
+		assertEquals(6, pencil.getPointDurability());
+	}
+	
+	@Test
+	public void whenEditPaperWithUppercaseLettersThenReducesPointDurabilityByFour() {
+		pencil.write("This is tasty!", paper);
+		pencil.edit(pencil.erase("is", paper), "SO", paper);
+		assertEquals(4, pencil.getPointDurability());
 	}
 
 	@Test
