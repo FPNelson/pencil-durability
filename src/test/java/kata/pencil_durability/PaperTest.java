@@ -69,10 +69,16 @@ public class PaperTest {
 	}
 
 	@Test
-	public void whenEditingTextInPaperThenReplacesWhitespaceInsteadOfAppending() {
+	public void whenEditingTextInPaperThenReplacesWhitespaceWithCharacterInsteadOfAppending() {
 		paper.append("Are you doing stuff?");
-		paper.erase("doing", 5);
 		paper.replace(paper.erase("doing", 5), "making");
 		assertEquals("Are you makingstuff?", paper.read());
+	}
+	
+	@Test
+	public void whenEditingTextInPaperThenReplacesCollisionsWithAtSymbolInsteadOfAppending() {
+		paper.append("Are you doing stuff?");
+		paper.replace(paper.erase("doing", 5), "creating");
+		assertEquals("Are you creati@@uff?", paper.read());
 	}
 }

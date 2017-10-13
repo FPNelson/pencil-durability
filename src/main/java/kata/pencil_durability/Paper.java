@@ -28,6 +28,8 @@ public class Paper {
 	}
 
 	protected void replace(int index, String str) {
-		text.replace(0, text.length(), "Are you makingstuff?");
+		for(int i = 0; i < str.length(); i++) {
+			text.setCharAt(index + i, Character.isWhitespace(text.charAt(index + i)) ? str.charAt(i) : '@');
+		}
 	}
 }
