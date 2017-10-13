@@ -16,12 +16,14 @@ public class Paper {
 		text.append(str);
 	}
 
-	protected void erase(String str, int numCharacters) {
+	protected int erase(String str, int numCharacters) {
 		int start = text.lastIndexOf(str);
 		if(start != -1) {
-			for(int i = str.length() - 1; i >= 0 && numCharacters > 0; i--, numCharacters--) {
-				text.setCharAt(start + i, ' ');
+			start += str.length() - 1;
+			for(int i = 0; i < str.length() && numCharacters > 0; i++, start--, numCharacters--) {
+				text.setCharAt(start, ' ');
 			}
 		}
+		return start + 1;
 	}
 }

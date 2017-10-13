@@ -35,14 +35,14 @@ public class Pencil {
 		}
 	}
 
-	public void erase(String str, Paper paper) {
+	public int erase(String str, Paper paper) {
 		int charsToErase = 0;
 		for(char character : str.toCharArray()) {
 			if(reduceEraserDurability(character)) {
 				charsToErase++;
 			}
 		}
-		paper.erase(str, charsToErase);
+		return paper.erase(str, charsToErase);
 	}
 	
 	public void sharpen() {

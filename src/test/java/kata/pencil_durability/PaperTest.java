@@ -61,4 +61,10 @@ public class PaperTest {
 		paper.erase("lunch", 5);
 		assertEquals("Are you doing stuff? Cause I'm not doing anything", paper.read());
 	}
+
+	@Test
+	public void whenErasingWordFromPaperThenReturnsIndexOfErasedWord() {
+		paper.append("Are you doing stuff?");
+		assertEquals(8, paper.erase("doing", 5));
+	}
 }

@@ -119,7 +119,7 @@ public class PencilTest {
 		superPencil.erase("doing", paper);
 		assertEquals("Are you doing stuff? Cause I'm not       anything", paper.read());
 	}
-	
+
 	@Test
 	public void whenEraseWordFromPaperWithNonDurableEraserThenReplacesLastNCharactersOfWordWithWhitespace() {
 		Pencil superPencil = new Pencil(100, 3, 4);
@@ -127,7 +127,7 @@ public class PencilTest {
 		superPencil.erase("doing", paper);
 		assertEquals("Are you doing stuff? Cause I'm not d     oing anything", paper.read());
 	}
-	
+
 	@Test
 	public void whenEraseWordFromPaperThenReducesEraserDurabilityByFive() {
 		pencil.write("This is tasty!", paper);
