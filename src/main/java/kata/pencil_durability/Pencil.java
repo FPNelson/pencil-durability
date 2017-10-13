@@ -46,6 +46,16 @@ public class Pencil {
 		return paper.erase(str, charsToErase);
 	}
 
+	public void edit(int index, String str, Paper paper) {
+		StringBuilder stringBuilder = new StringBuilder();
+		for(char character : str.toCharArray()) {
+			if(reducePointDurability(character)) {
+				stringBuilder.append(character);
+			}
+		}
+		paper.replace(index, stringBuilder.toString());
+	}
+
 	public void sharpen() {
 		if(length > 0) {
 			length--;
@@ -62,7 +72,7 @@ public class Pencil {
 		}
 		return pointDurability >= 0;
 	}
-	
+
 	private boolean reduceEraserDurability(char character) {
 		if(!Character.isWhitespace(character)) {
 			eraserDurability--;

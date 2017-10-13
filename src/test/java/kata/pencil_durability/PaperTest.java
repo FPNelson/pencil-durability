@@ -39,7 +39,7 @@ public class PaperTest {
 		paper.erase("doing", 5);
 		assertEquals("Are you doing stuff? Cause I'm not       anything", paper.read());
 	}
-	
+
 	@Test
 	public void whenErasingWordFromPaperWithLimitedCharactersThenErasesLastInstanceOfWordStartingFromLastCharacter() {
 		paper.append("Are you doing stuff? Cause I'm not doing anything");
@@ -74,7 +74,7 @@ public class PaperTest {
 		paper.replace(paper.erase("doing", 5), "making");
 		assertEquals("Are you makingstuff?", paper.read());
 	}
-	
+
 	@Test
 	public void whenEditingTextInPaperThenReplacesCollisionsWithAtSymbolInsteadOfAppending() {
 		paper.append("Are you doing stuff?");
