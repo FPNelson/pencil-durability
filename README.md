@@ -6,3 +6,5 @@ After installing Eclipse, navigate to *File -> Import -> Git -> Projects from Gi
 After cloning the project, navigate to *File -> Import -> Maven -> Existing Maven Projects* and enter the path to the cloned project, select */pom.xml  kata:pencil-durability:0.0.1-SNAPSHOT:jar* when it appears and proceed until Maven builds the project from the pom.xml file.
 
 Tests can be run in Maven by right clicking the project and navigating to *Run As -> Maven test*.
+
+If a compiler cannot be found when building from Maven, read http://roufid.com/no-compiler-is-provided-in-this-environment/.
